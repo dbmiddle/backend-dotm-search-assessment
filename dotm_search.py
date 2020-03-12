@@ -16,7 +16,7 @@ import argparse
 # import docx
 
 
-dotm_files_path = '/Users/D.Middleton/Kenzie_Assignments/Kenzie_Q3/backend-dotm-search-assessment/dotm_files'
+dotm_files_path = os.path.join(os.getcwd(), 'dotm_files')
 file_list = os.listdir(dotm_files_path)
 file_list = [f for f in file_list if f.endswith('.dotm')]  # store path names of files that match given string
 
@@ -25,7 +25,7 @@ def zip_search():
     file_matches = 0  # keep count of number of files that match given string
     files_searched = 0  # keep count of total number of files searched
     for item in file_list:
-        full_path = os.path.join(os.getcwd(), 'dotm_files', item)
+        full_path = os.path.join(dotm_files_path, item)
         with zipfile.ZipFile(full_path, 'r') as zip_ref:
             names = zip_ref.namelist()
             for name in names:
